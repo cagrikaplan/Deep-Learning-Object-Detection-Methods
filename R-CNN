@@ -4,3 +4,26 @@ labeled training data is scarse.
 Motivation: To what extent do the CNN classification results on ImageNet generalize to object detection results on the
 PASCAL VOC Challenge?
 
+Challenge1!
+
+Detection requires localization. Possible solutions:
+
+1. Regression (shown not much improvement via this method)
+2. Sliding window (introduces technical challenge)
+
+and preferred solution is "recognition using regions". Generate around 2000 proposals at test time, extract features 
+by using CNNs from these proposals and perform classification on each region's feature map via linear SVMs. Regardless
+of the region's shape, wrap it to a fixed size as an input to the CNN. 
+
+Challenge2!
+
+Training a CNN. It requires sufficient amount of labeled data. Possible solution:
+
+1. Use unsupervised pre-tranied netword and perform supervised fine-tuning. (pedestrian detection)
+
+and preferred solution is "using supervised pre-trained network on a large data (ILSVRC) and then perform domain specific
+fine-tuning on a small dataset (PASCAL)"
+
+MODULES of the DETECTION
+
+1. Generating category-independent region proposals: 
