@@ -26,4 +26,12 @@ fine-tuning on a small dataset (PASCAL)"
 
 MODULES of the DETECTION
 
-1. Generating category-independent region proposals: 
+1. Generating category-independent region proposals: region proposals are performed via selective search, obtained proposals
+are warpped to a fixed size of 227x227 RGB images and then driven to the AlexNet. For training step, VOC 2007 data is warped 
+as well. 
+
+2. Test time detection: Selective search, warping, feature maps, classify as scoring each extracted feature for
+each class via pretrained SVM, non-maximum suppression. 
+
+3. Training: Pretrain the CNN on ILSVRC 2012 (1000 category ImageNet) with no bounding box labels, adopt CNN to new task 
+(detection) and new domain (warped VOC data (20 category)) 
