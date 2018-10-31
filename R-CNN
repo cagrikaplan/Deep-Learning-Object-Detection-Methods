@@ -1,1 +1,6 @@
+Two approaches are combined: localize and segment objects on the image + use domain specific fine tuning considering 
+labeled training data is scarse.
+
+Motivation: To what extent do the CNN classification results on ImageNet generalize to object detection results on the
+PASCAL VOC Challenge?
 
