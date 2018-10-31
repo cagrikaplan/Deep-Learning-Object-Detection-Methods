@@ -34,4 +34,8 @@ as well.
 each class via pretrained SVM, non-maximum suppression. 
 
 3. Training: Pretrain the CNN on ILSVRC 2012 (1000 category ImageNet) with no bounding box labels, adopt CNN to new task 
-(detection) and new domain (warped VOC data (20 category)) 
+(detection) and new domain (warped VOC data (20 category)). This is done by fine-tuning where parameters of ImageNet trained 
+network remained same and the last 1000-way classification layer of CNN is replaced with 21-way classification layer. Then 
+training restarted with stochastic gradient descent and on warped region proposals from VOC. Moreover, positive examples
+which exceeds a IoU overlap threshold are considered as ground-truth bounding boxes for each class. Afterwards, SVM is 
+implemented. 
