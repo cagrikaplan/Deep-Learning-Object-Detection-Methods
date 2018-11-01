@@ -7,3 +7,21 @@ These candidates provide only rough localization that must be refined to achieve
 Motivation: single stage training algorithm that jointly learns to classify object proposals and refine their spatial 
 locations. 
 
+Drawbacks of R-CNN:
+1. Training is multi-stage pipeline= finetune conv net, fit SVMs to conv net features, regress bounding boxes.
+2. Expensive training in terms of space and time: extracting features and training SVM, bounding box regressor 
+for each proposal requires lots of disk space and time.
+3. Slow detection on test time due to results mentioned above.
+
+Drawbacks of SPPnet:
+1. Multi-stage pipeline
+2. Not possible to update conv layers preceding spatial pyramid pooling
+
+Contributions:
+1. Better mAP than R-CNN and SPPnet
+2. Single-stage training with multi-task loss
+3. All network layers are updateable
+4. Feature catching does not require disk storage
+
+
+
