@@ -23,5 +23,13 @@ Contributions:
 3. All network layers are updateable
 4. Feature catching does not require disk storage
 
+How does it work?
+1. Inputs to conv network are an image and set of object proposals
+2. Compute feature maps via CNN.
+3. For each object proposal, let region of interest pooling layer to extract feature vectors from feature maps. This is 
+accomplished through max pooling which converts features inside any valid region of interest into a small feature map.
+4. Feed these vectors to fully connected layers which outputs two branches; softmax layer for object categories and 
+another layer outputs four real valued number encodes refined bounding box positions for one of the classes.
+
 
 
