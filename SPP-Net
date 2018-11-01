@@ -21,3 +21,11 @@ Training:
 224x224 cropped images with spatial pyramid pooling refers to single size training
 224x224 and 180x180 images with spatial pyramid pooling refers to multi-size training
 In the testing step, claimed that it is straightforward to apply SPP-net on images of any sizes.
+
+Some notes:
+Binary SVM classifier is used for the detection of each category.
+Generation of positive samples are done through ground-truth windows. 
+Any sample overlapping a positive window by at most %30 considered as negative.
+
+
+
