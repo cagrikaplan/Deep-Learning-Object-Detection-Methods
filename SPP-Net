@@ -1,1 +1,23 @@
+Motivation1: base models of the network architectures accept fixed input image sizes. (AlexNet: 227x227x3, VGG-16: 224x224x3)
+This is due to fully connected layers. Limiting the aspect ratio and the scale of the input image by cropping or warping.
 
+Solution1: Introduce spatial pyramid pooling on the top of the last conv layer to generate fixed sized input fed to be to fully
+connected layers. This also allows one to train the network with varying sizes or scales. 
+
+Motivation2: Since R-CNN applies feature extraction via conv layers on thousands of raw image pixels warped from input image, 
+it is time consuming. 
+
+Solution2: Apply conv layers on the whole image once instead seperately and repeatedly on each region proposal.
+
+Spatial pyramid pooling: 
+Feature maps involve not only the strength of the responses, but also their spatial positions.
+Bag of Words approach pools features together such as variable output of conv layers gathered into fixed output size just 
+the fully connected layers. 
+SPP maintains spatial information by pooling in local spatial bins. Moreover, number of bins is fixed regardless of the image
+size and sizes of these bins' sizes are proportional to image size as well. 
+For fixed input size task, replace the last pooling layer preceeding fully connected layer with SPP layer. 
+
+Training: 
+224x224 cropped images with spatial pyramid pooling refers to single size training
+224x224 and 180x180 images with spatial pyramid pooling refers to multi-size training
+In the testing step, claimed that it is straightforward to apply SPP-net on images of any sizes.
