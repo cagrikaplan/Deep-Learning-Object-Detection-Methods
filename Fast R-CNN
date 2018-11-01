@@ -1,0 +1,9 @@
+Main direction is to efficiently classify object proposals by building on previous work R-CNN.
+
+Challenges:
+Numerous candidate object locations or proposals must be processed.
+These candidates provide only rough localization that must be refined to achieve precise localization.
+
+Motivation: single stage training algorithm that jointly learns to classify object proposals and refine their spatial 
+locations. 
+
