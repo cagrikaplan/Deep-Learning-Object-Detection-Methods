@@ -31,5 +31,21 @@ accomplished through max pooling which converts features inside any valid region
 4. Feed these vectors to fully connected layers which outputs two branches; softmax layer for object categories and 
 another layer outputs four real valued number encodes refined bounding box positions for one of the classes.
 
+Preratined network's modification:
+1. Replace last pooling layer with pooling layer.
+2. Replace pretrained network's fully connected and softmax layers with two sibling layers described above.
+3. Modified network as it accepts two inputs.
+
+Some notes:
+Each training sample to SPP layer comes from a different image, hence updating the conv layer preceding the SPP layer is 
+not possible.
+For two sbling outputs (bounding box regressor and classifier), a multi-task loss finction is derived.
+Large fully connected layers are accelerated by compressing them with truncated SVD.
+Three pretrained ImageNet models (AlexNet (small), VGG CNN M 1024 (medium) and VGG16 (very deep)) are used.
+
+
+
+
+
 
 
