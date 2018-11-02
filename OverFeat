@@ -12,4 +12,16 @@ Possible solutions:
 to the window.
 3. Accumulate the evidence for each category at each location and size.
 
+Vision Tasks
+1. Classification: Improvement on the network design and the inference step as compared to ALexNet classification. Another 
+differences are absent of contrast normalization, non-overlapping pooling regions and larger feature layers thanks to small
+strides (2 instead of 4). Two network models are experienced as fast and accurate model, respectively. For multi-scale 
+classification purpose, they explore the entire image by densely running the network at each location and at multiple scales.
+Also efficiency of sliding window approach on convnet is claimed to be not prohibitive since some of the convolution
+computations are shared even the larger image is fed to the network.  
+2. Localization: Predict object bounding boxes at each location and scale. Combine the regression predictions together, along
+with the classification results at each location (confidence). 
+3. Detection: Multiple locations of an image trained simultaneously. This is due to conv model in which weights are shared
+among all locations. 
+
 
