@@ -24,4 +24,12 @@ with the classification results at each location (confidence).
 3. Detection: Multiple locations of an image trained simultaneously. This is due to conv model in which weights are shared
 among all locations. 
 
+Cited Papers:
+
+Faster R-CNN:
+In the OverFeat method [18], a fully-connected (fc) layer is trained to predict the box coordinates for the localization 
+task that assumes a single object. The fc layer is then turned into a conv layer for detecting multiple class-specific 
+objects.
+The OverFeat paper [18] computes conv features from an image pyramid for classification, localization, and detection.
+
 
