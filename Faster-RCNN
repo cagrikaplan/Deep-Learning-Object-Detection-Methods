@@ -8,3 +8,11 @@ One encodes each conv map position into a short feature vector, e.g. 256-d,
 Another outputs objectness score and regressed bounds for k region proposals relative to various scales and aspect ratios at
 that location for each conv map position.
 
+How RPNs work?
+Basically, take an input image and output a set of rectangular object proposals and each of these rectangular proposals must 
+have objectness score (object? or background?). To do so, slide a small network on the top of last feature map. Then sliding 
+windows with different scales and aspect ratios maps this feature map to a lower dimensional vector which is later to be fed
+into two sbling fully connected layers (box regression and box classification). Each sliding window location generates k 
+region proposals. Regression layer predicts 4k outputs. Classification layer predicts 2k scores (object/not-object 
+probabilities). 
+
