@@ -1,0 +1,15 @@
+Research question: How a multiscale and sliding window approach can be efficiently implemented witin a ConvNet?
+
+Contribution: Localization by learning to predict object boundaries. Bounding boxes are then accumulated rather than
+suppressed to increase detection confidence. Different tasks can be learned simultaneously using a single shared network.
+
+Images in ImageNet dataset contains centered object fills much of the image size. In real world, generally object of 
+interest vary significantly in size and position within the image.
+
+Possible solutions:
+1. Apply convnet at multiple locations in the image in sliding window fashion over multiple scales. 
+2. Train the system to produce a prediction of the location and size of the bounding box containing the object relative 
+to the window.
+3. Accumulate the evidence for each category at each location and size.
+
+
