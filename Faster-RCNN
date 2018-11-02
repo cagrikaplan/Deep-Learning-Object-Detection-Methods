@@ -1,0 +1,10 @@
+Motivation: Generate cost free region proposal via region proposal network (RPN) which shares full image conv features 
+with the detection network. Then let RPN predict object bounds and objectness scores at each position.
+
+Sharing conv at test time makes cost for computing proposals small. 
+
+In a summary, on top of conv features, add two more conv layers (region proposal network). 
+One encodes each conv map position into a short feature vector, e.g. 256-d,
+Another outputs objectness score and regressed bounds for k region proposals relative to various scales and aspect ratios at
+that location for each conv map position.
+
