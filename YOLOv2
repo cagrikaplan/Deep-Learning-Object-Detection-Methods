@@ -1,0 +1,37 @@
+Better, Faster and Stronger than YOLO!
+Why?
+
+Better:
+Improve recall and localization while maintaining classification accuracy.
+Do not enlarge base model even though it may lead to more accuracy, i.e. keep it still fast.
+1. Batch normalization:improvement in convergence, removes the need for droput without causing overfitting.
+2. High resolution classifier: Compared to YOLO, give time to network to adjust weight in 10 epoch times for the new 
+resolution 448x448.
+3. Convolutional with anchor boxes: Predicting offsets (Faster R-CNN) instead of coordinates (YOLO) simplifies the 
+problem.
+4. Dimension clusters: How to pick anchor box sizes? Run k-means clustering on the training set bounding boxes to 
+automatically find good priors.
+5. Direct location prediction: NOT CLEAR
+6. Fine-Grained Features: Add a passthrough layer that brings features form an earlier layer in order to improve detection 
+performance on large and small objects simultaneously.
+7. Multi-Scale training: Make YOLOv2 to be robust to running images of different sizes. YOLO uses input resolution of 448x448. 
+Anchor boxes requires inputs with size 416x416. Every 10 batches, change the input size of the network. At the end, 
+same network can predict detections at different resolutions.
+
+Faster:
+VGG16 and GoogleNet architectures, powerful and slow, fast but less accurate respectively.
+1. Darknet-19: Base network of YOLOv2. 19 conv layers and 5 max pooling layers.
+2. Training for clssification: ImageNet 1000 class, 160 epochs, SGD, learning rate 0.1, data augmentation.
+3. Training for detection: 5 boxes for prediction, each having 5 coordinates and 20 classes (VOC dataset). Hence, 125 filters.
+and as described above, a passthrough layer. 
+
+Stronger:
+
+
+
+
+
+
+
+
+
