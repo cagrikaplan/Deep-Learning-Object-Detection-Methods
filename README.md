@@ -14,3 +14,4 @@ Corresponding papers:
 8. G-CNN
 9. YOLOv2
 10. HyperNet
+11. YOLOv3
