@@ -1,0 +1,35 @@
+Motivation: Prior works repurposes classifiers for detection. Instead, purpose regression on spatially separated bounding
+boxes and associated class probabilities. Notice that the whole detection pipeline is a single network which allows to 
+optimize it end-to-end directly.
+
+Main difference from the previous works: YOLO sees the entire image during training and test time so it implicitly encodes
+contextual information about classes as well as their appearances.
+
+How YOLO works?
+Divide the input image into SxS grid. (S=7 for PASCAL VOC with 20 classes)
+Each grid cell predicts B bounding boxes (bb) and confidence score. (B=2 for PASCAL VOC and confidence score is IoU between
+predicted bounding box and ground truth)
+For each bb, there are five predictions (x, y, w, h, confidence). 
+Thus, for each grid cell, 2 bb each has 5 predictions (overall 10) and 20 of classes, length of the tensor is 30. For S=7,
+whole tensor is 7x7x30.
+Predict also the class propobabilities per grid cell regardless of the B.
+At test time, multiply class prob and box confidence predictions which gives class-specpfpc confidence scores for each box.
+
+Training
+Pre-trained convnet on ImageNet 1000 class dataset.
+Then to improve detection, conv and fully connected layers with random parameters are added.
+Detection requires fine-grained visual information; increase the input resolution from 224x224 to 448x448.
+Final layer predicts class prob. and bb coordinates.
+Multi-part loss function is assigned.
+
+Inference
+On PASCAL VOC network predicts 98 bounding boxes per image.
+For each box class probabilities are predicted.
+Only requires a single network evaluation, unlike classifier based methods. 
+
+Limitation
+Each grid cell can only have one class. Hence, prediction of nearby objects are limited.
+Learning bounding boxes from a dataset limits network to generalize prediction to new or unusual aspect ratios or
+configurations.
+
+
