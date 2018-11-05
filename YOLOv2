@@ -26,7 +26,11 @@ VGG16 and GoogleNet architectures, powerful and slow, fast but less accurate res
 and as described above, a passthrough layer. 
 
 Stronger:
-
+Jointly training on classification and training data. 
+During the training, mix images from both dataset. If network receives a labelled image for detection, backpropogate based
+on the YOLOv2 loss function. Otherwise, if it receives a classification image, backpropagate loss from the classification 
+specific parts of the architecture.
+To do so, combine ImageNet and COCO by using WordTree.
 
 
 
