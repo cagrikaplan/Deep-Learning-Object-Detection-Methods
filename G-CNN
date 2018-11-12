@@ -1,8 +1,13 @@
 Works without proposal algorithms.
 
-Overall algorithm: Superimpose a multi-scale regular grid on the image. The boxes can overlap. Assign each box to a ground
-truth (IoU) during the training. Then regress boxes in the grid to move towards the objects in the image they are assigned to.
+Overall algorithm: Superimpose a multi-scale regular grid on the image. In other words, start from a fixed multi-scale spatial 
+pyramid boxes. The boxes can overlap. Assign each box to a ground truth (IoU) during the training. Then regress boxes in the 
+grid to move towards the objects in the image they are assigned to.
 
 Network: Base model can be either AlexNet or VGG. After conv layers, a ROI pooling layer is added as well. After the fc layers,
 a linear regressor outputs the change in the location and scale of each current bounding box. 
+
+Some notes: Fine tuning is performed except early conv layers of AlexNet and VGG. at test time, the set of bounding boxes is 
+initialized to boxes inside a spatial pyramid grid. The regressor moves boxes towards objects using the classifier score to 
+determine which class regressor to apply to update the box. 
 
