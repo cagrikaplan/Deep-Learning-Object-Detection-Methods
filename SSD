@@ -1,0 +1,4 @@
+Model:
+
+The convolutional model for predicting detections is different for each feature layer.  
+(cf Overfeat[4] and YOLO[5] that operate on a single scale feature map).
